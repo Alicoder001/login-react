@@ -12,11 +12,9 @@ const useLogin = () => {
 			const res = await signInWithEmailAndPassword(auth, email, password);
 			signIn(res.user);
 			setPending(false);
-			console.log(res.user);
 		} catch (err) {
 			setError(err.message);
 			setPending(false);
-			console.log("error: ", err.message);
 		}
 	};
 	return { error, pending, login };
