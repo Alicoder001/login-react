@@ -7,6 +7,7 @@ const Transaction = () => {
 	const query = collection(db, `/users/${user.uid}/transaction`);
 	const [docs, loading, error] = useCollectionData(query);
 	const [showForm, setShowForm] = useState(false);
+	console.log(docs);
 	const [data, setData] = useState({
 		name: "",
 		amount: "",
@@ -79,33 +80,35 @@ const Transaction = () => {
 						</form>
 					</div>
 				)}
-				<div className="h-auto  max-w-xl w-full bg-white rounded-lg p-4 font-bold">
-					<ul className="my-4 ">
-						{docs &&
-							docs.map((item) => {
-								return (
-									<li
-										key={Math.random()}
-										className=" mt-4"
-										id="1">
-										<div className="flex gap-2">
-											<div className="w-9/12 h-12 bg-[#e0ebff] rounded-[7px] flex justify-start items-center px-3">
-												<span
-													className="strike_none
+				{docs && (
+					<div className="h-auto  max-w-xl w-full bg-white rounded-lg p-4 font-bold">
+						<ul className="my-4 ">
+							{docs &&
+								docs.map((item) => {
+									return (
+										<li
+											key={Math.random()}
+											className=" mt-4"
+											id="1">
+											<div className="flex gap-2">
+												<div className="w-9/12 h-12 bg-[#e0ebff] rounded-[7px] flex justify-start items-center px-3">
+													<span
+														className="strike_none
 													text-sm ml-4 text-[#5b7a9d]
 													font-semibold">
-													{item.name}
+														{item.name}
+													</span>
+												</div>
+												<span className="w-1/4 h-12 bg-[#e0ebff] rounded-[7px] flex justify-center text-sm text-[#5b7a9d] font-semibold items-center ">
+													{item.amount}$
 												</span>
 											</div>
-											<span className="w-1/4 h-12 bg-[#e0ebff] rounded-[7px] flex justify-center text-sm text-[#5b7a9d] font-semibold items-center ">
-												{item.amount}$
-											</span>
-										</div>
-									</li>
-								);
-							})}
-					</ul>
-				</div>
+										</li>
+									);
+								})}
+						</ul>
+					</div>
+				)}
 			</div>
 		</div>
 	);
