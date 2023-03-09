@@ -7,7 +7,7 @@ const Transaction = () => {
 	const query = collection(db, `/users/${user.uid}/transaction`);
 	const [docs, loading, error] = useCollectionData(query);
 	const [showForm, setShowForm] = useState(false);
-	console.log(docs);
+	console.log(error);
 	const [data, setData] = useState({
 		name: "",
 		amount: "",
